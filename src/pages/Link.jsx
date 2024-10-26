@@ -15,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Location from '../components/locationStats';
+import Location from "../components/LocationStats";
 import DeviceStats from "../components/deviceStats";
 
 
