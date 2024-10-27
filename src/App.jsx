@@ -1,11 +1,10 @@
-import { Suspense } from "react";
+
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import Landing from "./pages/Landing";
 import DashBoard from "./pages/DashBoard";
 import Auth from "./pages/Auth";
-import RedirectLink from "./pages/RedirectLink";
 import Link from "./pages/Link";
 import UrlProvider from "./context";
 import RequireAuth from "./components/require-auth";
