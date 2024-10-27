@@ -1,38 +1,39 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import useFetch from '../hooks/use-ftech';
-import { getLongUrl } from '../db/apiUrls';
-import {useEffect} from 'react'
-import {storeClicks} from '../db/apiClicks'
-import {BarLoader} from "react-spinners";
+import { useParams, useNavigate } from "react-router-dom";
+import useFetch from "../hooks/use-ftech";
+import { getLongUrl } from "../db/apiUrls";
+import { useEffect } from "react";
+import { storeClicks } from "../db/apiClicks";
+import { BarLoader } from "react-spinners";
 
 const RedirectLink = () => {
-  const {id} = useParams();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const {loading, data, fn} = useFetch(getLongUrl, id);
+  // Fetch data related to the URL
+  const { loading, data, fn } = useFetch(getLongUrl, id);
 
-  const {loading: loadingStats, fn: fnStats} = useFetch(storeClicks, {
+  // Store clicks after fetching URL data
+  const { loading: loadingStats, fn: fnStats } = useFetch(storeClicks, {
     id: data?.id,
-    originalUrl: data?.original_url,
+    originalUrl: data?.original_url
   });
 
   useEffect(() => {
-    fn();
+    fn(); // Trigger fetch for the URL data when component mounts
   }, []);
 
   useEffect(() => {
     if (!loading && data) {
-      fnStats();
+      fnStats(); // Store click stats once URL data is available
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!loading && !loadingStats && data?.original_url) {
-      // Redirect to the original URL after both fetches complete
-      window.location.href = data.original_url;
+      // Use navigate for React Router-friendly redirection
+      navigate(data.original_url, { replace: true });
     }
-  }, [loading, loadingStats, data]);
+  }, [loading, loadingStats, data, navigate]);
 
   if (loading || loadingStats) {
     return (
@@ -44,7 +45,7 @@ const RedirectLink = () => {
     );
   }
 
-  return null
+  return null;
 };
 
 export default RedirectLink;
