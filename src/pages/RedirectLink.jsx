@@ -27,6 +27,13 @@ const RedirectLink = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
+    useEffect(() => {
+    if (!loading && !loadingStats && data?.original_url) {
+      // Redirect to the original URL after both fetches complete
+      window.location.href = data.original_url;
+    }
+  }, [loading, loadingStats, data]);
+
   if (loading || loadingStats) {
     return (
       <>
@@ -37,7 +44,7 @@ const RedirectLink = () => {
     );
   }
 
-  return <></>;
+  return null
 };
 
 export default RedirectLink;
