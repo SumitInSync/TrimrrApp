@@ -78,11 +78,11 @@ function Link() {
             {url?.title}
           </span>
           <a
-            href={`https://trimmr-sumit.netlify.app/${link}`}
+            href={`https://trimmer-sumit.netlify.app/${link}`}
             target="_blank"
             className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            https://trimmr-sumit.netlify.app/{link}
+            https://trimmer-sumit.netlify.app/{link}
           </a>
 
           <a href={url?.original_url} target="_blank" className="flex items-center gap-1 hover:underline cursor-pointer">
@@ -98,7 +98,7 @@ function Link() {
               variant="ghost"
               onClick={() =>
                 navigator.clipboard.writeText(
-                  `https://trimmr-sumit.netlify.app/${url?.short_url}`
+                  `https://trimmer-sumit.netlify.app/${url?.short_url}`
                 )
               }
             >
