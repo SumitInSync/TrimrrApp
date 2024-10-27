@@ -33,7 +33,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/:id',
-        element: <RedirectLink />
+        
+<Suspense fallback={<div>Loading...</div>}>
+            <RedirectLink />
+          </Suspense>
+
+        
       },
     ]
   }
