@@ -9,6 +9,7 @@ import RedirectLink from './pages/RedirectLink';
 import Link from './pages/Link';
 import UrlProvider from './context';
 import RequireAuth from './components/require-auth';
+import {Suspense} from 'react';
 
 const router = createBrowserRouter([
   {
