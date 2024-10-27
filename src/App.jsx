@@ -9,6 +9,8 @@ import RedirectLink from "./pages/RedirectLink";
 import Link from "./pages/Link";
 import UrlProvider from "./context";
 import RequireAuth from "./components/require-auth";
+import { lazy, Suspense } from "react";
+const RedirectLink = lazy(() => import("./pages/RedirectLink"));
 
 const router = createBrowserRouter([
   {
