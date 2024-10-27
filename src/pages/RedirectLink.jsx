@@ -37,7 +37,7 @@ const RedirectLink = () => {
     );
   }
 
-  return null;
+  return <></>;
 };
 
 export default RedirectLink;
